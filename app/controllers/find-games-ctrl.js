@@ -8,12 +8,14 @@ define([
 	.config(["$routeProvider", function($routeProvider) {
 		$routeProvider.when("/game", {
 			templateUrl: "../partials/game.html",
-			controller: "gameCtrl",
-			controllerAs: "game"
+			controller: "findGamesCtrl",
+			controllerAs: "findGames"
 		});
 	}])
-	.controller("findGamesCtrl", ["$firebaseArray", function($firebaseArray) {
-
+	.controller("findGamesCtrl", ["$firebaseArray", "getGames", function($firebaseArray, getGames) {
+    getGames.getGames().then(function(data) {
+    	console.log(data);
+    });
 	
 	}]);
 });
