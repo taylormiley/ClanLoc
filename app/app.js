@@ -4,8 +4,8 @@ define([
   "angularfire",
   "angularRoute",
   "angularFilter",
-  "controllers/gameCtrl"
-], function(angular, bootstrap, angularfire, angularRoute, filter, gameCtrl) {
+  "controllers/find-games-ctrl"
+], function(angular, bootstrap, angularfire, angularRoute, filter, findGamesCtrl) {
   return angular.module("ClanLocApp", [
     "ngRoute",
     "firebase",
