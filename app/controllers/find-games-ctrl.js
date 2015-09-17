@@ -12,10 +12,18 @@ define([
 			controllerAs: "findGames"
 		});
 	}])
-	.controller("findGamesCtrl", ["$firebaseArray", "getGames", function($firebaseArray, getGames) {
-    getGames.getGames().then(function(data) {
-    	console.log(data);
-    });
+	.controller("findGamesCtrl", ["$firebaseArray", "getGamesFac", function($firebaseArray, getGames) {
+		this.gamesArr = [];
+		this.searchInput = "";
+
+		this.searchGames = function () {
+			console.log("clicked");
+	    getGames.getGames(this.searchInput).then(function(data) {
+	    	console.log(data.results);
+	    	this.gamesArr = data.results;
+	    	console.log(this.gamesArr);
+	    }.bind(this));
+	  }.bind(this);
 	
 	}]);
 });
