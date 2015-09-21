@@ -26,3 +26,19 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<h4>Games</h4>
+<div ng-repeat="game in profile.fbGames">
+  <p>{{game.name}}</p>
+  <img ng-click="profile.showInput(game)" ng-src="{{game.image}}">
+  <div ng-show="game.addValue">
+    <a href="/#/find-clans">Find Clans</a>
+    <a href="/#/make-clan">Make Clan</a>
+    <select ng-model="clanSelect">
+      <option value="" disabled selected>Clan</option>
+      <option>Clan1</option>
+      <option>Clan2</option>
+      <option>Clan3</option>
+    </select>
+    <button type="button" ng-click="profile.addGame(this)">Add to Clan</button>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "games": [
+    {
+      "name": "Metroid",
+      "image": "http://static.giantbomb.com/uploads/scale_small/9/93770/2362064-nes_metroid.jpg",
+      "platform": "NES",
+      "release": "8/6/1986"
+    }
+  ]
+}
