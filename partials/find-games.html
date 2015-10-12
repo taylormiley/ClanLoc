@@ -26,20 +26,26 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<div ng-repeat="game in findGames.gamesArr">
-  <p>{{game.name}}</p>
-  <img ng-click="findGames.showInput(game)" ng-src="{{game.image.small_url}}">
-  <div ng-show="game.addValue">
-    <select ng-model="consoleSelect">
-      <option value="" disabled selected>Platform</option>
-      <option>PC</option>
-      <option>PS4</option>
-      <option>Xbox One</option>
-      <option>Wii U</option>
-    </select>
-    <button type="button" ng-click="findGames.addGame(this)">Add Game</button>
+<div class="row">
+  <div ng-repeat="game in findGames.gamesArr">
+    <div class="panel panel-default col-xs-11 col-sm-5 col-md-3 col-lg-2">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{game.name}}</h3>
+      </div>
+      <div class="panel-body">
+        <img class="img-responsive" ng-click="findGames.showInput(game)" ng-src="{{game.image.small_url}}">
+        <div ng-show="game.addValue">
+          <select class="consoleSelect" ng-model="consoleSelect">
+            <option value="" disabled selected>Platform</option>
+            <option>PC</option>
+            <option>PS4</option>
+            <option>Xbox One</option>
+            <option>Wii U</option>
+          </select>
+          <button class="consoleButton" type="button" ng-click="findGames.addGame(this)">Add Game</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 

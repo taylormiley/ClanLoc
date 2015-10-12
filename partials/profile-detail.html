@@ -18,7 +18,6 @@
         <li><a href="/#/find-clans">Find Clans</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
-        <span>Welcome {{profile.username}}</span>
         <div class="form-group">
           <input type="text" class="form-control" ng-model="findGames.searchInput" placeholder="Search Games">
         </div>
@@ -27,38 +26,38 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div ng-repeat="user in profile.usersArr | filter:{username: profile.username}">
-  <h4 ng-click="profile.aboutInput(user)">{{profile.username}}</h4>
-  <p ng-hide="user.addValue">{{user.about}}</p>
-  <textarea ng-show="user.addValue" ng-model="user.about"></textarea>
-</div>
-<h4>Clans</h4>
-  <div ng-repeat="clan in profile.clansArr | filter:{users: profile.uid}">
-    <a class="bigLink" ng-href="/#/clan-profile/{{clan.name}}">{{clan.name}}</a>
+<h4>Games</h4>
+<div ng-repeat="game in profile.fbGamesArr | filter:{user: profile.uid}">
+  <p>{{game.name}}</p>
+  <p>{{game.platform}}</p>
+  <img ng-click="profile.showInput(game)" ng-src="{{game.image}}">
+  <div ng-show="game.addValue">
+    <a href="/#/find-clans">Find Clans</a>
+    <a href="/#/make-clan">Make Clan</a>
+    <select ng-model="clanSelect">
+      <option value="" disabled selected>Clan</option>
+      <option>Clan1</option>
+      <option>Clan2</option>
+      <option>Clan3</option>
+    </select>
+    <button type="button" ng-click="profile.addGame(this)">Add to Clan</button>
   </div>
 </div>
-<h4>Games</h4>
-<div class="row">
-  <div ng-repeat="game in profile.fbGamesArr | filter:{user: profile.uid}">
-    <div class="panel panel-default col-xs-11 col-sm-5 col-md-3 col-lg-2">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{game.name}}</h3>
-      </div>
-      <div class="panel-body">
-        <p>{{game.platform}}</p>
-        <img class="img-responsive" ng-click="profile.showInput(game)" ng-src="{{game.image}}">
-        <div ng-show="game.addValue">
-          <a href="/#/find-clans">Find Clans</a>
-          <a href="/#/make-clan">Make Clan</a>
-          <select ng-model="clanSelect">
-            <option value="" disabled selected>Clan</option>
-            <option>Clan1</option>
-            <option>Clan2</option>
-            <option>Clan3</option>
-          </select>
-          <button type="button" ng-click="profile.addGame(this)">Add to Clan</button>
-        </div>
-      </div>
+<h4>Clans</h4>
+<div ng-repeat="clan in profile.clansArr | filter:{user: profile.uid}">
+  <a ng-href="/#/clan-profile/{{clan.name}}">{{clan.name}}</a>
+  <div ng-repeat="game in clan.games">
+    <img ng-click="profile.showInput(game)" ng-src="{{game.image}}">
+    <div ng-show="game.addValue">
+      <a href="/#/find-clans">Find Clans</a>
+      <a href="/#/make-clan">Make Clan</a>
+      <select ng-model="clanSelect">
+        <option value="" disabled selected>Clan</option>
+        <option>Clan1</option>
+        <option>Clan2</option>
+        <option>Clan3</option>
+      </select>
+      <button type="button" ng-click="profile.addGame(this)">Add to Clan</button>
     </div>
   </div>
 </div>

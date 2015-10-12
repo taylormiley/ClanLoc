@@ -1,0 +1,51 @@
+body {
+  background-color: #66CCFF;
+}
+
+
+[class*="col-"]{
+    margin-left:20px;
+    
+}
+
+.consoleSelect {
+  left: 50%;
+  right: 50%;
+}
+
+.consoleButton {
+  left: 50%;
+  right: 50%;
+}
+
+.bigLink {
+  font-size: 30px;
+}
+
+.member {
+  padding-left: 20px;
+}
+
+.logg {
+  padding-top: 100px;
+}
+
+.clanl {
+  font-size: 58px;
+  color: blue;
+}
+
+.loc {
+  font-size: 58px;
+  color: purple;
+}
+
+.logHead {
+  text-align: center;
+  padding-top: 150px;
+}
+
+.gameLocal {
+  text-align: center;
+  font-size: 30px;
+}

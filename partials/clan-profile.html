@@ -26,3 +26,24 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div ng-repeat="clan in clanProfile.clansArr | filter:{name: clanProfile.clanId}">
+  <h4>{{clan.name}}</h4>
+  <ul ng-repeat="user in clan.users">Members
+    <li>{{user}}</li>
+  </ul>
+  <h5>About Clan:</h5>
+  <p class="about-clan" ng-model="clanProfile.aboutClan" placeholder="Details about this clan...">{{clan.about}}</p>
+  <h5>Clan Schedule:</h5>
+  <p class="clan-schedule" ng-model="clanProfile.clanSchedule" placeholder="Details about this clan's schedule...">{{clan.schedule}}</p>
+  <p>Games:</p>
+  <div class="row">
+    <div ng-repeat="game in clan.games">
+      <div class="panel panel-default col-xs-11 col-sm-5 col-md-3 col-lg-2">
+        <div class="panel-body">
+          <img class="img-responsive" ng-click="profile.showInput(game)" ng-src="{{game.image}}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button type="button" ng-click="clanProfile.joinClan(clan)">Join Clan</button>

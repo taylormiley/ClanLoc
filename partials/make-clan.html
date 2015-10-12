@@ -17,12 +17,51 @@
         <li><a href="/#/find-games">Find Games<span class="sr-only">(current)</span></a></li>
         <li><a href="/#/find-clans">Find Clans</a></li>
       </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" ng-model="findGames.searchInput" placeholder="Search Games">
-        </div>
-        <button class="btn btn-default" ng-click="findGames.searchGames()">Search</button>
-      </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div>
+  <div class="row">
+    <div class="form-group col-xs-11 col-sm-5 col-md-5 col-lg-5">
+      <label for="usr">Clan Name:</label>
+      <input type="text" class="form-control" ng-model="makeClan.clanName" id="usr">
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-11 col-sm-5 col-md-5 col-lg-5">
+      <label for="usr">State:</label>
+      <input type="text" class="form-control" ng-model="makeClan.clanState" id="usr" placeholder="e.g. Tennessee">
+    </div>
+  </div>
+  <div class="row"> 
+    <div class="form-group col-xs-11 col-sm-5 col-md-5 col-lg-5">
+      <label for="comment">About Clan:</label>
+      <textarea class="form-control" ng-model="makeClan.aboutClan" rows="5" id="comment"></textarea>
+    </div>
+  </div>
+  <div class="row"> 
+    <div class="form-group col-xs-11 col-sm-5 col-md-5 col-lg-5">
+      <label for="comment">Clan Schedule:</label>
+      <textarea class="form-control" ng-model="makeClan.clanSchedule" rows="5" id="comment"></textarea>
+    </div>
+  </div>
+</div>
+<div class="row">>
+  <div ng-repeat="game in makeClan.fbGamesArr | filter:{user: makeClan.uid}">
+    <div class="panel panel-default col-xs-11 col-sm-5 col-md-3 col-lg-2">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{game.name}}</h3>
+      </div>
+      <div class="panel-body">
+        <p>{{game.platform}}</p>
+        <img class="img-responsive" ng-src="{{game.image}}">
+        <div class="checkbox">
+          <label><input type="checkbox" ng-click="makeClan.toggleSelection(game)">Add Game</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <button type="button" ng-click="makeClan.addClan()">Make Clan</button>  
+</div>
